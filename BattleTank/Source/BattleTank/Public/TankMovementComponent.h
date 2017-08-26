@@ -8,7 +8,7 @@
 #include "TankMovementComponent.generated.h"
 
 /**
- *  Resposible from driving tank tracks
+ *  Resposible for driving tank tracks
  */
 
 UCLASS( ClassGroup = (Custom), meta = (BlueprintSpawnableComponent))
@@ -30,11 +30,13 @@ public:
 	UFUNCTION(BlueprintCallable, Category = Input)
 	void IntendTurnLeft(float Throw);
 
+	// TODO check best protection
+	virtual void RequestDirectMove(const FVector& MoveVelocity, bool bForceMaxSpeed) override;
+
 	
 	
 private:
 	UTankTrack*  LeftTrack = nullptr;
 	UTankTrack*  RightTrack = nullptr;
 
-	// TODD prevent double-speed due to dual control use
 };
